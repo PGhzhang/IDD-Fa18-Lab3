@@ -26,11 +26,12 @@ The analog values range from 0 - 1023.
 Depending on how hard I press. When I press really hard, the voltage goes up to over 900 and when I press lightly, the voltage can be as low, for example 50.
 
 **b. What kind of relationship does the voltage have as a function of the force applied? (e.g., linear?)**
+
 According to [Datasheet](https://cdn-shop.adafruit.com/datasheets/FSR400Series_PD.pdf), the output voltage is propotional to the force applied, as indicated by the function as well as the graph. As the force applied increases, the FSR resistence decreases, the current flowing increases, resulting in larger voltage. 
 
 
-
-**c. In Examples->Basic->Fading the LED values range from 0-255. What do you have to do so that you get the full range of output voltages from the LED when using your FSR to change the LED color?
+**c. In Examples->Basic->Fading the LED values range from 0-255. What do you have to do so that you get the full range of output voltages from the LED when using your FSR to change the LED color?**
+I use analogRead to get analog values from FSR. Since analog values of FSR ranges from 0-1024, I map that number to a 0-255 scale. To change LED color, I set the rule that if fsrmap<85: turn green light on, if 85<fsr<170, turn blue light on, otherwise, red one.
 
 
 **d. What resistance do you need to have in series to get a reasonable range of voltages from each sensor?**
