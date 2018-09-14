@@ -129,10 +129,10 @@ void loop() {
 
 
 
-
-
-
 ### 3. IR Proximity Sensor
+
+Ambient decreases when there's object moving towards the sensor
+
 
 **a. Describe the voltage change over the sensing range of the sensor. A sketch of voltage vs. distance would work also. Does it match up with what you expect from the datasheet?**
 
