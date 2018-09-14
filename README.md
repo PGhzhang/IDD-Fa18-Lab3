@@ -7,9 +7,11 @@
 ## Part A.  Writing to the Serial Monitor
  
 **a. Based on the readings from the serial monitor, what is the range of the analog values being read?**
+
 The analog values range from 0 - 1023.
  
 **b. How many bits of resolution does the analog to digital converter (ADC) on the Arduino have?**
+
 10 bit, because 2^10 = 1024.
 
 
@@ -23,6 +25,7 @@ The analog values range from 0 - 1023.
 ### 1. FSR, Flex Sensor, Photo cell, Softpot
 
 **a. What voltage values do you see from your force sensor?**
+
 Depending on how hard I press. When I press really hard, the voltage goes up to over 900 and when I press lightly, the voltage can be as low, for example 50.
 
 **b. What kind of relationship does the voltage have as a function of the force applied? (e.g., linear?)**
@@ -31,6 +34,7 @@ According to [Datasheet](https://cdn-shop.adafruit.com/datasheets/FSR400Series_P
 
 
 **c. In Examples->Basic->Fading the LED values range from 0-255. What do you have to do so that you get the full range of output voltages from the LED when using your FSR to change the LED color?**
+
 I use analogRead to get analog values from FSR. Since analog values of FSR ranges from 0-1024, I map that number to a 0-255 scale. To change LED color, I set the rule that if fsrmap<85: turn green light on, if 85<fsr<170, turn blue light on, otherwise, red one.
 
 
