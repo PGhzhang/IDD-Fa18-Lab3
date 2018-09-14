@@ -1,36 +1,47 @@
 # Data Logger (and using cool sensors!)
 
-*A lab report by John Q. Student.*
+*A lab report by Hanyu Zhang.*
 
 ## In The Report
-
-Include your responses to the bold questions on your own fork of [this lab report template](https://github.com/FAR-Lab/IDD-Fa18-Lab2). Include snippets of code that explain what you did. Deliverables are due next Tuesday. Post your lab reports as README.md pages on your GitHub, and post a link to that on your main class hub page.
-
-For this lab, we will be experimenting with a variety of sensors, sending the data to the Arduino serial monitor, writing data to the EEPROM of the Arduino, and then playing the data back.
 
 ## Part A.  Writing to the Serial Monitor
  
 **a. Based on the readings from the serial monitor, what is the range of the analog values being read?**
+The analog values range from 0 - 1023.
  
 **b. How many bits of resolution does the analog to digital converter (ADC) on the Arduino have?**
+10 bit, because 2^10 = 1024.
+
 
 ## Part B. RGB LED
 
 **How might you use this with only the parts in your kit? Show us your solution.**
+
 
 ## Part C. Voltage Varying Sensors 
  
 ### 1. FSR, Flex Sensor, Photo cell, Softpot
 
 **a. What voltage values do you see from your force sensor?**
+Depending on how hard I press. When I press really hard, the voltage goes up to over 900 and when I press lightly, the voltage can be as low, for example 50.
 
 **b. What kind of relationship does the voltage have as a function of the force applied? (e.g., linear?)**
+According to [Datasheet](https://cdn-shop.adafruit.com/datasheets/FSR400Series_PD.pdf), the output voltage is propotional to the force applied, as indicated by the function as well as the graph. As the force applied increases, the FSR resistence decreases, the current flowing increases, resulting in larger voltage. 
 
-**c. Can you change the LED fading code values so that you get the full range of output voltages from the LED when using your FSR?**
+
+
+**c. In Examples->Basic->Fading the LED values range from 0-255. What do you have to do so that you get the full range of output voltages from the LED when using your FSR to change the LED color?
+
 
 **d. What resistance do you need to have in series to get a reasonable range of voltages from each sensor?**
+Flex sensor:
+Photo cell:
+Softpot:
 
 **e. What kind of relationship does the resistance have as a function of stimulus? (e.g., linear?)**
+Flex sensor:
+Photo cell:
+Softpot:
 
 ### 2. Accelerometer
  
