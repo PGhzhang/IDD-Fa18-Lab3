@@ -138,6 +138,8 @@ Ambient decreases when there's object moving towards the sensor
 
 **b. Upload your merged code to your lab report repository and link to it here.**
 
+[Merged Code](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/merged_Hanyu.ino)
+
 ## Optional. Graphic Display
 
 **Take a picture of your screen working insert it here!**
