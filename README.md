@@ -19,6 +19,57 @@ The analog values range from 0 - 1023.
 
 **How might you use this with only the parts in your kit? Show us your solution.**
 
+I connected RGB LED pins according to the schema and edited the sample code to light it up. 
+
+Code as follows
+
+```
+int redPin = 9;
+int greenPin = 10;
+int bluePin = 11;
+int redVal;
+int greenVal;
+int blueVal;
+
+int fsrReading;
+int fsrmap;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(redPin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);  
+}
+ 
+void loop()
+{
+  fsrReading = analogRead(A0);
+  fsrmap = map(fsrReading, 0,1023,0,255);
+  Serial.println(fsrmap);
+
+  if (fsrReading <= 85){
+    setColor(0, 255, 0);  // green
+    } 
+  else if (fsrReading > 85 && fsrReading < 170){
+    setColor(0, 0, 255);  // blue
+    }
+  else if(fsrReading >=170 && fsrReading <=255){
+    setColor(255, 0, 0);  // red
+    } 
+  delay(1000); 
+}
+
+void setColor(int red, int green, int blue)
+{
+    red = 255 - red;
+    green = 255 - green;
+    blue = 255 - blue;
+  analogWrite(redPin, red);
+  analogWrite(greenPin, green);
+  analogWrite(bluePin, blue);  
+}
+```
 
 ## Part C. Voltage Varying Sensors 
  
@@ -26,11 +77,14 @@ The analog values range from 0 - 1023.
 
 **a. What voltage values do you see from your force sensor?**
 
-Depending on how hard I press. When I press really hard, the voltage goes up to over 900 and when I press lightly, the voltage can be as low, for example 50.
+The voltage value should range from 0-5V. I'm reading analog values.
+Depending on how hard I press. When I press really hard, the analog value goes up to over 900 and when I press lightly, the analog value can be as low, for example 50.
 
 **b. What kind of relationship does the voltage have as a function of the force applied? (e.g., linear?)**
 
 According to [Datasheet](https://cdn-shop.adafruit.com/datasheets/FSR400Series_PD.pdf), the output voltage is propotional to the force applied, as indicated by the function as well as the graph. As the force applied increases, the FSR resistence decreases, the current flowing increases, resulting in larger voltage. 
+
+![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/function.png)
 
 ![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/FSR%20voltage%20graph.png)
 
@@ -41,19 +95,19 @@ I use analogRead to get analog values from FSR. Since analog values of FSR range
 
 
 **d. What resistance do you need to have in series to get a reasonable range of voltages from each sensor?**
-Flex sensor:
-Photo cell:
-Softpot:
+
+I usde 10kOhm resister and it works fine.
+
 
 **e. What kind of relationship does the resistance have as a function of stimulus? (e.g., linear?)**
-Flex sensor:
-Photo cell:
-Softpot:
+
+resistence and voltages has a negative corelation
 
 ### 2. Accelerometer
  
 **a. Include your accelerometer read-out code in your write-up.**
 
+![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/acce%20serial%20output.png)
 [Code Link](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/accel_Hanyu.ino)
 
 Code
@@ -133,10 +187,11 @@ void loop() {
 
 ### 3. IR Proximity Sensor
 
-Ambient decreases when there's object moving towards the sensor
-
 **a. Describe the voltage change over the sensing range of the sensor. A sketch of voltage vs. distance would work also. Does it match up with what you expect from the datasheet?**
 
+The voltage drops as you move away from the sensor and goes up when you move closer.
+Proximity increase we you move towarsd and drops the other way.
+Ambient decreases when there's object moving towards the sensor. 
 
 **b. Upload your merged code to your lab report repository and link to it here.**
 
@@ -163,11 +218,7 @@ Yes, the states are arranged in a way following the logical actions. When analog
 1024 byte-sized data
 
 **d. How would you get analog data from the Arduino analog pins to be byte-sized? How about analog data from the I2C devices?**
-
-Map 0-1023 to 0-255
-map(analogRead(sensorPin), 0, 1023, 0, 255);
-
-Map the max value of I2C device to 255 and the min value of I2C device to 0.
+We can either map 0-1023 to 0-255 using map(analogRead(sensorPin), 0, 1023, 0, 255) or or simply divide analogRead values by 4.0. For I2C devices, we can map the max value of I2C device to 255 and the min value of I2C device to 0.
 
 **e. Alternately, how would we store the data if it were bigger than a byte? (hint: take a look at the [EEPROMPut](https://www.arduino.cc/en/Reference/EEPROMPut) example)**
 
@@ -181,6 +232,7 @@ Split and store in different addresses using EEPROM.put()
 ### 2. Design your logger
  
 **a. Insert here a copy of your final state diagram.**
+
 
 ### 3. Create your data logger!
  
