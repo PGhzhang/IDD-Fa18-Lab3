@@ -175,7 +175,7 @@ Split and store in different addresses using EEPROM.put()
 
 **Upload your modified code that takes in analog values from your sensors and prints them back out to the Arduino Serial Monitor.**
 
-[Code Link](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/SwitchState_Sensor.ino)
+[Code Link] (https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/SwitchState_Sensor.ino)
 
 
 ### 2. Design your logger
@@ -185,3 +185,13 @@ Split and store in different addresses using EEPROM.put()
 ### 3. Create your data logger!
  
 **a. Record and upload a short demo video of your logger in action.**
+
+For my data logger, I used a softpot and an IR Proximity sensor. The device reads touches on softpot and translate into music notes. State change is dependent on the distance between your hand and IR Proximity sensor. You can trigger the music play by placing your hand close to IR Proximity sensor. Not too close though, because it will clear EEPROM memory otherwise.
+
+[Code Link] (https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/data_logger_Hanyu.ino)
+
+Video Demo
+
+[![](http://img.youtube.com/vi/7lEf5IBylVU/0.jpg)](http://www.youtube.com/watch?v=7lEf5IBylVU "")
+
+
