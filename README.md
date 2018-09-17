@@ -32,6 +32,8 @@ Depending on how hard I press. When I press really hard, the voltage goes up to 
 
 According to [Datasheet](https://cdn-shop.adafruit.com/datasheets/FSR400Series_PD.pdf), the output voltage is propotional to the force applied, as indicated by the function as well as the graph. As the force applied increases, the FSR resistence decreases, the current flowing increases, resulting in larger voltage. 
 
+![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/FSR%20voltage%20graph.png)
+
 
 **c. In Examples->Basic->Fading the LED values range from 0-255. What do you have to do so that you get the full range of output voltages from the LED when using your FSR to change the LED color?**
 
@@ -52,7 +54,8 @@ Softpot:
  
 **a. Include your accelerometer read-out code in your write-up.**
 
-Code Link
+[Code Link](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/accel_Hanyu.ino)
+
 Code
 ```
 // include the library code:
@@ -128,13 +131,12 @@ void loop() {
 ```
 
 
-
 ### 3. IR Proximity Sensor
 
 Ambient decreases when there's object moving towards the sensor
 
-
 **a. Describe the voltage change over the sensing range of the sensor. A sketch of voltage vs. distance would work also. Does it match up with what you expect from the datasheet?**
+
 
 **b. Upload your merged code to your lab report repository and link to it here.**
 
@@ -150,15 +152,31 @@ Ambient decreases when there's object moving towards the sensor
 
 **a. Does it matter what actions are assigned to which state? Why?**
 
+Yes, the states are arranged in a way following the logical actions. When analog value =0, we would expect state resets by clearing up EEPROM values. On the other hand, if we assign case 0 to write, it would make no sense since we could only do limited sinces with reading/writing analog value 0.
+
 **b. Why is the code here all in the setup() functions and not in the loop() functions?**
+ 
+ Cases are written in loop() funcitons in SwitchState file, thus you don't need to put specific codes for each state in loop() functions.
 
 **c. How many byte-sized data samples can you store on the Atmega328?**
 
+1024 byte-sized data
+
 **d. How would you get analog data from the Arduino analog pins to be byte-sized? How about analog data from the I2C devices?**
+
+Map 0-1023 to 0-255
+map(analogRead(sensorPin), 0, 1023, 0, 255);
+
+Map the max value of I2C device to 255 and the min value of I2C device to 0.
 
 **e. Alternately, how would we store the data if it were bigger than a byte? (hint: take a look at the [EEPROMPut](https://www.arduino.cc/en/Reference/EEPROMPut) example)**
 
+Split and store in different addresses using EEPROM.put()
+
 **Upload your modified code that takes in analog values from your sensors and prints them back out to the Arduino Serial Monitor.**
+
+[Code Link](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/SwitchState_Sensor.ino)
+
 
 ### 2. Design your logger
  
