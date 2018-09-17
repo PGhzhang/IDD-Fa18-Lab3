@@ -108,6 +108,7 @@ resistence and voltages has a negative corelation
 **a. Include your accelerometer read-out code in your write-up.**
 
 ![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/acce%20serial%20output.png)
+
 [Code Link](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/accel_Hanyu.ino)
 
 Code
@@ -233,6 +234,7 @@ Split and store in different addresses using EEPROM.put()
  
 **a. Insert here a copy of your final state diagram.**
 
+![alt text](https://github.com/PGhzhang/IDD-Fa18-Lab3/blob/master/IMG_6081.JPG)
 
 ### 3. Create your data logger!
  
