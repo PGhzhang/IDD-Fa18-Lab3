@@ -219,6 +219,7 @@ Yes, the states are arranged in a way following the logical actions. When analog
 1024 byte-sized data
 
 **d. How would you get analog data from the Arduino analog pins to be byte-sized? How about analog data from the I2C devices?**
+
 We can either map 0-1023 to 0-255 using map(analogRead(sensorPin), 0, 1023, 0, 255) or or simply divide analogRead values by 4.0. For I2C devices, we can map the max value of I2C device to 255 and the min value of I2C device to 0.
 
 **e. Alternately, how would we store the data if it were bigger than a byte? (hint: take a look at the [EEPROMPut](https://www.arduino.cc/en/Reference/EEPROMPut) example)**
